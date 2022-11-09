@@ -3,11 +3,14 @@ import { Alert, Button, Grid, Snackbar } from '@mui/material';
 
 import { Breeds } from './types';
 import { fetchDogBreedList, fetchDogImages } from './remotes';
+import { useStyles } from './mui-style';
 import CustomSelection from './components/CustomSelection';
 import CustomField from './components/CustomField';
 import CustomImageList from './components/CustomImageList';
 
 function App() {
+    const { classes, cx } = useStyles();
+
     const [breedsList, setBreedsList] = useState<Breeds>({});
     const [subBreedList, setSubBreedList] = useState<string[]>([]);
     const [imageList, setImageList] = useState<string[]>([]);
@@ -106,12 +109,12 @@ function App() {
     }, [breedsList, selectedBreed]);
 
     return (
-        <div className="App">
+        <>
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={snackBarOpen} onClose={toggleSnackBar} autoHideDuration={4000}>
                 <Alert severity="error">{snackBarError}</Alert>
             </Snackbar>
 
-            <Grid container width={'80%'} marginTop={'5em'}>
+            <Grid container gap={5} className={cx(classes.marginContainer)}>
                 <CustomSelection
                     error={inputValidation.breed === false && inputsHaveErrors ? true : false}
                     title="Breed"
@@ -134,12 +137,12 @@ function App() {
                     value={selectedNumber}
                     onChange={handleSelectedNumber}
                 ></CustomField>
-                <Button variant="outlined" onClick={tryFetchDogImages}>
+                <Button variant="outlined" onClick={tryFetchDogImages} className={cx(classes.shortBtn)}>
                     View Images
                 </Button>
             </Grid>
             {imageList.length > 0 && <CustomImageList data={imageList}></CustomImageList>}
-        </div>
+        </>
     );
 }
 

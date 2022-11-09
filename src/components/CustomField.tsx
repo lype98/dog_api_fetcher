@@ -14,6 +14,7 @@ function CustomField({ title, value, error, onChange }: { title: string; value: 
                 value={value}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 type="number"
+                fullWidth
                 onChange={changeHandler}
             />
         </CustomGrid>
