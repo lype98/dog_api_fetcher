@@ -7,6 +7,7 @@ import { useStyles } from './mui-style';
 import CustomSelection from './components/CustomSelection';
 import CustomField from './components/CustomField';
 import CustomImageList from './components/CustomImageList';
+import CustomGrid from './components/CustomGrid';
 
 function App() {
     const { classes, cx } = useStyles();
@@ -114,7 +115,7 @@ function App() {
                 <Alert severity="error">{snackBarError}</Alert>
             </Snackbar>
 
-            <Grid container gap={5} className={cx(classes.marginContainer)}>
+            <Grid container className={cx(classes.marginContainer)}>
                 <CustomSelection
                     error={inputValidation.breed === false && inputsHaveErrors ? true : false}
                     title="Breed"
@@ -137,9 +138,11 @@ function App() {
                     value={selectedNumber}
                     onChange={handleSelectedNumber}
                 ></CustomField>
-                <Button variant="outlined" onClick={tryFetchDogImages} className={cx(classes.shortBtn)}>
-                    View Images
-                </Button>
+                <CustomGrid className={cx(classes.textEnd)}>
+                    <Button variant="outlined" onClick={tryFetchDogImages} className={cx(classes.btnPadding)}>
+                        View Images
+                    </Button>
+                </CustomGrid>
             </Grid>
             {imageList.length > 0 && <CustomImageList data={imageList}></CustomImageList>}
         </>
