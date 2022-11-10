@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 describe('Image Loading', () => {
     it("that user can select a dog's sub breed and load multiple images", () => {
         // visit site
