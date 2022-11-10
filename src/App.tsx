@@ -17,7 +17,7 @@ function App() {
 
     const [selectedBreed, setSelectedBreed] = useState('');
     const [selectedSubBreed, setSelectedSubBreed] = useState('');
-    const [selectedNumber, setSelectedNumber] = useState('0');
+    const [selectedNumber, setSelectedNumber] = useState('');
 
     const [snackBarOpen, setSnackBarOpen] = useState(false);
     const [snackBarError, setSnackBarError] = useState('');
