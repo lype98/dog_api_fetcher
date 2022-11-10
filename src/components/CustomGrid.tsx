@@ -1,9 +1,12 @@
 import { Grid, Typography } from '@mui/material';
+import { useStyles } from '../mui-style';
 
-function CustomGrid({ title, children }: { title: string; children: React.ReactNode }) {
+function CustomGrid({ title, className, children }: { title?: string; className?: string; children: React.ReactNode }) {
+    const { classes, cx } = useStyles();
+
     return (
-        <Grid item xs={3}>
-            <Typography>{title}</Typography>
+        <Grid item xs={6} md={3} className={cx(...[className], classes.gridAlign)}>
+            {title ? <Typography>{title}</Typography> : null}
             {children}
         </Grid>
     );
