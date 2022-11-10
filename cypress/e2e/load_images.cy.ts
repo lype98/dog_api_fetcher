@@ -1,6 +1,21 @@
 /// <reference types="cypress" />
 describe('Image Loading', () => {
-    it("that user can select a dog's sub breed and load multiple images", () => {
+    it("can select a dog's breed and load 1 image", () => {
+        // visit site
+        cy.visit('/');
+        // select breed
+        cy.get('#Breed').click();
+        cy.findByRole('option', { name: /boxer/i }).click();
+        // select number of images
+        const imageNumber = 1;
+        cy.findByRole('spinbutton').type(imageNumber.toString());
+        // click view images
+        cy.findByRole('button', { name: /view images/i }).click();
+        // assertion
+        cy.findByRole('list').children().should('have.length', imageNumber);
+    });
+
+    it("can select a dog's sub breed and load multiple images", () => {
         // visit site
         cy.visit('/');
         // select breed
@@ -15,6 +30,6 @@ describe('Image Loading', () => {
         // click view images
         cy.findByRole('button', { name: /view images/i }).click();
         // assertion
-        cy.findByRole('list').children().should('have.length', 2);
+        cy.findByRole('list').children().should('have.length', imageNumber);
     });
 });
