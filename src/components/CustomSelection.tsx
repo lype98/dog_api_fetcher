@@ -21,7 +21,7 @@ function CustomSelection({
     return (
         <CustomGrid title={title}>
             <FormControl error={error} fullWidth>
-                <Select value={value} onChange={changeHandler} displayEmpty defaultValue="Select">
+                <Select id={title.replace(/\s+/g, '')} value={value} onChange={changeHandler} displayEmpty defaultValue="Select">
                     <MenuItem value="" disabled>
                         <em>Select</em>
                     </MenuItem>
